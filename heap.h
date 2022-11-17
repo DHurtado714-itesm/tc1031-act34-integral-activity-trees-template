@@ -35,10 +35,10 @@ private:
 	int parent(int) const;
 	int left(int) const;
 	int right(int) const;
-	void pushDown(int);
 	void swap(int, int);
 
 public:
+	void pushDown(int);
 	Heap(int);
 	~Heap();
 	bool empty() const;

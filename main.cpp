@@ -22,14 +22,14 @@ int main(int argc, char* argv[]) {
 	ofstream outputFile;
 
 	// Open file and read variables
-	inputFile.open("input0.txt");
+	inputFile.open(argv[1]);
 	if (inputFile.fail())
 	{
 		cout << "Error opening file" << endl;
 		return 1;
 	}
 
-	outputFile.open("my_output0.txt");
+	outputFile.open(argv[2]);
 	if (outputFile.fail())
 	{
 		cout << "Error opening file" << endl;
@@ -48,7 +48,23 @@ int main(int argc, char* argv[]) {
 			Heap.add(number);
 		}
 
-	cout << Heap.toString() << endl;
+	// Sort the list
+	for(int i = 0; i < n_list; i++)
+	{
+		Heap.pushDown(i);
+	}
+
+	int sum = 0, contador = 0;
+
+	for(int i = 0; i < n_list && Heap.length() > 1; i++)
+	{
+		sum = Heap.remove() + Heap.remove();
+		Heap.toString();
+		Heap.add(sum);
+		contador += sum - 1;
+	}
+	
+	outputFile << contador << endl;
 	
 	return 0;
 }
